@@ -581,14 +581,14 @@ def make_figure2_tier1_verification(outdir):
             Cabs_oc = out_oc[2] * math.pi * (dshell / 2) ** 2
             Csca_c = out_c[1] * math.pi * (dshell / 2) ** 2
             Csca_oc = out_oc[1] * math.pi * (dshell / 2) ** 2
-            rabs.append(Cabs_c / Cabs_oc)
-            rsca.append(Csca_c / Csca_oc)
+            rabs.append(Cabs_oc / Cabs_c)
+            rsca.append(Csca_oc / Csca_c)
         axes[0].plot(cf_range, rabs, color=color, label=f"{dcore} nm")
         axes[1].plot(cf_range, rsca, color=color, label=f"{dcore} nm")
 
     for ax, ylab, title in zip(axes, [r"$R_{abs}$", r"$R_{sca}$"],
-                                ["(a) Absorption ratio: coated BC / pure OC",
-                                 "(b) Scattering ratio: coated BC / pure OC"]):
+                                ["(a) Absorption ratio: pure OC / coated BC",
+                                 "(b) Scattering ratio: pure OC / coated BC"]):
         ax.axhline(1.0, color=COLORS["neutral"], lw=1.0, ls="--")
         ax.set_xlabel("Coating factor (CF)")
         ax.set_ylabel(ylab)
